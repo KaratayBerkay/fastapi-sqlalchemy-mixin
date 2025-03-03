@@ -5,11 +5,12 @@ from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session, Session
 
-from ApiLayers.AllConfigs.SqlDatabase.configs import WagDatabase
+
+DATABASE_URL = ""
 
 # Configure the database engine with proper pooling
 engine = create_engine(
-    WagDatabase.DATABASE_URL,
+    DATABASE_URL,
     pool_pre_ping=True,  # Verify connection before using
     pool_size=20,  # Maximum number of permanent connections
     max_overflow=10,  # Maximum number of additional connections
@@ -34,6 +35,7 @@ def get_session_factory() -> scoped_session:
     return scoped_session(session_local)
 
 
+# Get database session with proper connection management
 @contextmanager
 def get_db() -> Generator[Session, None, None]:
     """Get database session with proper connection management.
