@@ -8,7 +8,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - PYTHONPATH=/service_app
+      - PYTHONPATH=/mainapp
 
   auth-service:
     container_name: auth-service
@@ -18,7 +18,7 @@ services:
     ports:
       - "8001:8000"
     environment:
-      - PYTHONPATH=/service_app
+      - PYTHONPATH=/authapp
 
   postgres-fastapi:
     image: 'bitnami/postgresql:latest'
