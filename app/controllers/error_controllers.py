@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import FastAPI
 
-from .bases import ErrorHandler
+from ..error_handlers.bases import ErrorHandler
 
 
 class ErrorHandlerRegisterController:
@@ -12,5 +12,5 @@ class ErrorHandlerRegisterController:
 
     def register_error_handlers(self):
         for exception_class in self.exception_classes:
-            print('Exception name:', exception_class)
+            print('Exception handlers is now added to router : ', exception_class)
             self.app.add_exception_handler(exception_class.exception_class, exception_class.function)

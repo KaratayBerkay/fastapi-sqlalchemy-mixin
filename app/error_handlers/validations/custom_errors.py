@@ -3,11 +3,11 @@ from pydantic import ValidationError
 
 class AppBaseException(Exception):
     """Base class for all application-specific exceptions."""
-
     pass
 
 
 class AppValidationError(AppBaseException, ValidationError):
+    """Custom exception for validation errors."""
 
     def __init__(self, *args, route):
         super().__init__(*args)

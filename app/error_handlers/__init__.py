@@ -1,6 +1,6 @@
-from .validations.custom_errors import AppValidationError
+from app.error_handlers.validations.base import ValidationErrorHandler
 
 
 __all__ = (
-    'AppValidationError',
+    'ValidationErrorHandler',
 )
