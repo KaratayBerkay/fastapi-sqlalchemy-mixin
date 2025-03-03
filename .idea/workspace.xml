@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="517055c6-95bc-48d2-85b0-c2619a4da990" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/bases.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/error_handlers/bases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/error_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/error_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/error_handlers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/validations/custom_errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/error_handlers/validations/custom_errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/validations/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/error_handlers/validations/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hello.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/error_handlers/validations/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/error_handlers/validations/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/validations/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/validations/request/auth/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +39,19 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/berkay/repos/git-github-repo/fastapi-sqlalchemy-mixin"
+    "last_opened_file_path": "/home/berkay/repos/git-github-repo/fastapi-sqlalchemy-mixin/app/validations/response"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/validations/response" />
+      <recent name="$PROJECT_DIR$/app/services/database/controllers" />
+      <recent name="$PROJECT_DIR$/app/models/users" />
+      <recent name="$PROJECT_DIR$/app/models/notes" />
+      <recent name="$PROJECT_DIR$/app/services/database" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/validations/request" />
       <recent name="$PROJECT_DIR$/app/error_handlers" />
       <recent name="$PROJECT_DIR$/app/error_handlers/validations" />
     </key>
