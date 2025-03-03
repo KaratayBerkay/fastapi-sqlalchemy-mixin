@@ -1,0 +1,32 @@
+services:
+
+  fastapi-backend:
+    container_name: fastapi-backend
+    #    restart: on-failure
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/service_app
+
+  postgres-fastapi:
+    image: 'bitnami/postgresql:latest'
+    container_name: postgres-fastapi
+    networks:
+      - network_store_services
+    restart: on-failure
+    env_file:
+      - postgres.env
+    depends_on:
+      - commercial_main_mongo_service
+    ports:
+      - "5444:5432"
+    volumes:
+      - postgres_data:/bitnami/postgresql
+
+networks:
+  network_store_services:
+
+volumes:
+  postgres_data:

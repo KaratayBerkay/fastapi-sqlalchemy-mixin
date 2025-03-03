@@ -10,7 +10,7 @@ RUN apt-get update \
     && pip install --no-cache-dir poetry
 
 # Copy Poetry configuration
-COPY DockerApiServices/pyproject.toml ./pyproject.toml
+COPY pyproject.toml ./pyproject.toml
 
 # Configure Poetry and install dependencies with optimizations
 RUN poetry config virtualenvs.create false \
@@ -19,7 +19,7 @@ RUN poetry config virtualenvs.create false \
     && rm -rf ~/.cache/pypoetry
 
 # Copy application code
-COPY . .
+COPY ./app /app/
 
 # Set Python path to include app directory
 ENV PYTHONPATH=/app \
