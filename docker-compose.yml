@@ -1,12 +1,22 @@
 services:
 
-  fastapi-backend:
-    container_name: fastapi-backend
+  main-service:
+    container_name: main-service
     #    restart: on-failure
     build:
       context: .
     ports:
       - "8000:8000"
+    environment:
+      - PYTHONPATH=/service_app
+
+  auth-service:
+    container_name: auth-service
+    #    restart: on-failure
+    build:
+      context: .
+    ports:
+      - "8001:8000"
     environment:
       - PYTHONPATH=/service_app
 
@@ -25,6 +35,30 @@ services:
     volumes:
       - postgres_data:/bitnami/postgresql
 
+  proxy-manager:
+    container_name: proxy-manager
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    env_file:
+      - nginx-conf.env
+      # Uncomment this if you want to change the location of
+      # the SQLite DB file within the container
+      # DB_SQLITE_FILE: "/data/database.sqlite"
+
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
 networks:
   network_store_services:
 
