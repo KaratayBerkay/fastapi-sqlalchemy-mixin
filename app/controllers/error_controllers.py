@@ -12,5 +12,7 @@ class ErrorHandlerRegisterController:
 
     def register_error_handlers(self):
         for exception_class in self.exception_classes:
-            print('Exception handlers is now added to router : ', exception_class)
-            self.app.add_exception_handler(exception_class.exception_class, exception_class.function)
+            print("Exception handlers is now added to router : ", exception_class)
+            self.app.add_exception_handler(
+                exception_class.exception_class, exception_class.function
+            )

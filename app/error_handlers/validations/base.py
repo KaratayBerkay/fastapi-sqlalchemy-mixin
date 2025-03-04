@@ -4,6 +4,5 @@ from .handler import validation_error_handler
 
 
 ValidationErrorHandler = ErrorHandler(
-    function=validation_error_handler,
-    exception_class=AppValidationError
+    function=validation_error_handler, exception_class=AppValidationError
 )
