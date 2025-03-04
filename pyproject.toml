@@ -9,6 +9,8 @@ dependencies = [
     "arrow>=1.3.0",
     "black>=25.1.0",
     "fastapi>=0.115.11",
+    "prometheus-fastapi-instrumentator>=7.0.2",
     "sqlalchemy-mixins>=2.0.5",
     "sqlalchemy>=2.0.38",
+    "uvicorn>=0.34.0",
 ]

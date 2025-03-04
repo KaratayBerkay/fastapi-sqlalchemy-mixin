@@ -1,6 +1,11 @@
 FROM python:3.12-slim
 
-WORKDIR /app
+WORKDIR /application
+
+# Set Python path to include app directory
+ENV PYTHONPATH=/application \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
 
 # Install system dependencies and Poetry
 RUN apt-get update \
@@ -19,12 +24,7 @@ RUN poetry config virtualenvs.create false \
     && rm -rf ~/.cache/pypoetry
 
 # Copy application code
-COPY ./app /app/
-
-# Set Python path to include app directory
-ENV PYTHONPATH=/app \
-    PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+COPY application /application
 
 # Run the application using the configured uvicorn server
 CMD ["poetry", "run", "python", "app.py"]

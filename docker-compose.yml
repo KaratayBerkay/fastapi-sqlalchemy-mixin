@@ -7,8 +7,8 @@ services:
       context: .
     ports:
       - "8000:8000"
-    environment:
-      - PYTHONPATH=/service_app
+    depends_on:
+      - postgres-fastapi
 
   postgres-fastapi:
     image: 'bitnami/postgresql:latest'
@@ -18,8 +18,6 @@ services:
     restart: on-failure
     env_file:
       - postgres.env
-    depends_on:
-      - commercial_main_mongo_service
     ports:
       - "5444:5432"
     volumes:
