@@ -5,45 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="517055c6-95bc-48d2-85b0-c2619a4da990" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/application/routes/auth/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/routes/routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/schemas/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/schemas/auth/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/schemas/notes/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/application/schemas/users/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/error_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/error_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/route_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/route_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/bases.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/bases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/validations/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/validations/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/validations/custom_errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/validations/custom_errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error_handlers/validations/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/validations/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middlewares/token_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/middlewares/token_middleware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth/route.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/auth/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/notes/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/users/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/controllers/core_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/core_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/controllers/crud_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/crud_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/controllers/filter_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/filter_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/controllers/mixin_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/mixin_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/controllers/pagination_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/pagination_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/controllers/response_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/response_controllers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/services/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validations/request/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/validations/request/auth/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validations/request/list_options/list_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/validations/request/list_options/list_options.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/validations/response/auth/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/validations/response/auth/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/item.html" beforeDir="false" afterPath="$PROJECT_DIR$/application/static/item.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/auth/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/auth/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,16 +40,16 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/berkay/repos/git-github-repo/fastapi-sqlalchemy-mixin/application/routes/home"
+    "last_opened_file_path": "/home/berkay/repos/git-github-repo/fastapi-sqlalchemy-mixin/application/routes/users"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/routes/users" />
+      <recent name="$PROJECT_DIR$/application/routes/notes" />
       <recent name="$PROJECT_DIR$/application/routes/home" />
       <recent name="$PROJECT_DIR$/application" />
       <recent name="$PROJECT_DIR$/app/validations/response" />
-      <recent name="$PROJECT_DIR$/app/services/database/controllers" />
-      <recent name="$PROJECT_DIR$/app/models/users" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application/static" />

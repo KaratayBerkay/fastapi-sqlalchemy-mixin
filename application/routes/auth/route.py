@@ -5,7 +5,7 @@ from validations.request.auth.auth import RequestLogin, RequestRegister
 auth_route = APIRouter(prefix="/auth", tags=["Auth"])
 
 
-@auth_route.get("/login", description="Login Route")
+@auth_route.get("/list", description="Login Route")
 async def login(request: Request, login_data: RequestLogin, response: Response):
     print("headers", dict(request.headers))
     response.headers["X-Cat-Dog"] = "alone in the world"
@@ -13,7 +13,16 @@ async def login(request: Request, login_data: RequestLogin, response: Response):
     return {"message": "Login endpoint"}
 
 
-@auth_route.post("/register", description="Register Route")
+@auth_route.post("/create", description="Register Route")
+async def register(request: Request, register_data: RequestRegister, response: Response):
+    print("headers", dict(request.headers))
+    response.headers["X-Cat-Dog"] = "alone in the world"
+    print("register_data", register_data)
+    return {"message": "Register endpoint"}
+
+
+
+@auth_route.post("/update", description="Register Route")
 async def register(request: Request, register_data: RequestRegister, response: Response):
     print("headers", dict(request.headers))
     response.headers["X-Cat-Dog"] = "alone in the world"

@@ -23,10 +23,7 @@ def create_app():
     application.mount("/static", StaticFiles(directory="static"), name="static")
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=[
-            "http://localhost",
-            "http://localhost:8000",
-        ],
+        allow_origins=["http://localhost", "http://localhost:8000"],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -46,8 +43,9 @@ def create_app():
     return application
 
 
-app = create_app()  # Create FastAPI application
+app = create_app()   # Create FastAPI application
 Instrumentator().instrument(app=app).expose(app=app)  # Setup Prometheus metrics
+
 
 if __name__ == "__main__":
     uvicorn.Server(
