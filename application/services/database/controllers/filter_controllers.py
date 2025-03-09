@@ -30,6 +30,11 @@ class QueryModel:
 
     @classmethod
     def produce_query_to_add(cls: Type[T], filter_list):
+        """
+        Adds query to main filter options
+        Args:
+            filter_list:
+        """
         if filter_list.get("query"):
             for smart_iter in cls.filter_expr(**filter_list["query"]):
                 if key := getattr(getattr(smart_iter, "left", None), "key", None):
@@ -91,6 +96,15 @@ class QueryModel:
         *args: Union[BinaryExpression, ColumnExpressionArgument],
         db: Session,
     ):
+        """
+        Filter single record by expressions without status filtering
+        Args:
+            *args:
+            db:
+
+        Returns:
+            Query response with single record
+        """
         query = cls._query(db=db).filter(*args)
         return PostgresResponse(
             pre_query=cls._query(db=db), query=query, is_array=False

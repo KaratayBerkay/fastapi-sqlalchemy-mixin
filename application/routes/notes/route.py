@@ -13,7 +13,7 @@ async def notes_list(request: Request, login_data: RequestLogin, response: Respo
     return {"message": "an endpoint"}
 
 
-@notes_route.get("/create", description="Create Note with UUID")
+@notes_route.post("/create", description="Create Note with UUID")
 async def notes_create(request: Request, login_data: RequestLogin, response: Response):
     print("headers", dict(request.headers))
     response.headers["X-Cat-Dog"] = "alone in the world"
@@ -21,7 +21,7 @@ async def notes_create(request: Request, login_data: RequestLogin, response: Res
     return {"message": "an endpoint"}
 
 
-@notes_route.get("/create", description="Update Note with UUID")
+@notes_route.post("/update", description="Update Note with UUID")
 async def notes_create(request: Request, login_data: RequestLogin, response: Response):
     print("headers", dict(request.headers))
     response.headers["X-Cat-Dog"] = "alone in the world"

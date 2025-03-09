@@ -1,7 +1,9 @@
 import uvicorn
 
-from fastapi import FastAPI
-from fastapi import Request
+from controllers.route_controllers import RouteRegisterController
+from controllers.open_api_controllers import create_openapi_schema
+
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import RedirectResponse
@@ -9,11 +11,10 @@ from fastapi.responses import RedirectResponse
 from middlewares.token_middleware import token_middleware
 from prometheus_fastapi_instrumentator import Instrumentator
 
+from routes.routes import get_routes
+
 
 def create_app():
-    from routes.routes import get_routes
-    from controllers.route_controllers import RouteRegisterController
-    from controllers.open_api_controllers import create_openapi_schema
 
     application = FastAPI(
         title="FastAPI Application",
