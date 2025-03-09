@@ -15,6 +15,13 @@ from routes.routes import get_routes
 
 
 def create_app():
+    from controllers.alembic_controller import AlembicController
+    from services.database.database import get_db
+
+    # Initialize AlembicController with active database session
+    with get_db() as active_session:
+        controller = AlembicController(session=active_session)
+        controller.update_alembic()
 
     application = FastAPI(
         title="FastAPI Application",
@@ -44,11 +51,12 @@ def create_app():
     return application
 
 
-app = create_app()   # Create FastAPI application
+app = create_app()  # Create FastAPI application
 Instrumentator().instrument(app=app).expose(app=app)  # Setup Prometheus metrics
 
 
 if __name__ == "__main__":
-    uvicorn.Server(
-        uvicorn.Config(app="app:app", host="0.0.0.0", port=8000, log_level="info", reload=True)
-    ).run()     # Run the application with Uvicorn Server
+    uvicorn_config = uvicorn.Config(
+        app="app:app", host="0.0.0.0", port=8000, log_level="info", reload=True
+    )
+    uvicorn.Server(uvicorn_config).run()  # Run the application with Uvicorn Server

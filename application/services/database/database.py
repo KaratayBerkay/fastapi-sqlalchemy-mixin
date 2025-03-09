@@ -2,15 +2,15 @@ from contextlib import contextmanager
 from functools import lru_cache
 from typing import Generator
 
+from db_config import postgres_configs
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session, Session
 
 
-DATABASE_URL = ""
-
 # Configure the database engine with proper pooling
 engine = create_engine(
-    DATABASE_URL,
+    postgres_configs.url,
     pool_pre_ping=True,  # Verify connection before using
     pool_size=20,  # Maximum number of permanent connections
     max_overflow=10,  # Maximum number of additional connections

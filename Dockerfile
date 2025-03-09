@@ -14,8 +14,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && pip install --no-cache-dir poetry
 
-# Install pip
-
 # Copy Poetry configuration
 COPY pyproject.toml ./pyproject.toml
 
@@ -27,8 +25,12 @@ RUN poetry config virtualenvs.create false \
 
 # Copy application code
 COPY application /application
+COPY api.env /application/api.env
+COPY postgres.env /application/postgres.env
 COPY api_config.py /application/api_config.py
 COPY db_config.py /application/db_config.py
+COPY alembic /application/alembic
+COPY alembic.ini /application/alembic.ini
 
 # Run the application using the configured uvicorn server
 CMD ["poetry", "run", "python", "app.py"]

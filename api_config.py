@@ -7,7 +7,11 @@ class Configs(BaseSettings):
     SECRET: str = ""
     ACCESS_TIME: int = 432000
     REFRESH_TIME: int = 864000
+    DEFAULT_SIZE: int = 10
+    MIN_SIZE: int = 5
+    MAX_SIZE: int = 50
 
-    model_config = SettingsConfigDict(env_file="/api.env", env_prefix="API_")
+    model_config = SettingsConfigDict(env_file="api.env", env_prefix="API_")
+
 
 api_configs = Configs()

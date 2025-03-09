@@ -6,7 +6,6 @@ from api_config import api_configs
 
 
 class JWTTokenController:
-
     """A class to handle JWT token creation and verification"""
 
     def __init__(self):
@@ -18,7 +17,9 @@ class JWTTokenController:
         self.access_time = int(api_configs.ACCESS_TIME)
         self.refresh_time = int(api_configs.REFRESH_TIME)
 
-    def create_token(self, payload: Dict[str, Any], expires_in: Optional[int] = None) -> str:
+    def create_token(
+        self, payload: Dict[str, Any], expires_in: Optional[int] = None
+    ) -> str:
         """
         Create a JWT token with the given payload
 
@@ -33,9 +34,13 @@ class JWTTokenController:
             # Create a copy of payload to avoid modifying the original
             token_payload = payload.copy()
             # Add expiration time and issued at time
-            token_payload["exp"] = datetime.now(tz=timezone.utc) + timedelta(seconds=expires_in)
+            token_payload["exp"] = datetime.now(tz=timezone.utc) + timedelta(
+                seconds=expires_in
+            )
             token_payload["iat"] = datetime.now(tz=timezone.utc)
-            return jwt.encode(payload=token_payload, key=self.secret_key, algorithm=self.algorithm)
+            return jwt.encode(
+                payload=token_payload, key=self.secret_key, algorithm=self.algorithm
+            )
         except Exception as err_:
             raise Exception(f"Error creating token: {str(err_)}")
 

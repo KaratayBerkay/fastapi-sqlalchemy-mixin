@@ -15,11 +15,11 @@ def get_routes() -> list[APIRouter]:
 
 def get_safe_endpoint_urls() -> list[tuple[str, str]]:
     return [
-        ('/', "GET"),
-        ('/docs', "GET"),
-        ('/redoc', "GET"),
-        ('/openapi.json', "GET"),
-        ('/auth/register', "POST"),
-        ('/auth/login', "POST"),
-        ('/metrics', "GET"),
+        ("/", "GET"),
+        ("/docs", "GET"),
+        ("/redoc", "GET"),
+        ("/openapi.json", "GET"),
+        ("/auth/register", "POST"),
+        ("/auth/login", "POST"),
+        ("/metrics", "GET"),
     ]

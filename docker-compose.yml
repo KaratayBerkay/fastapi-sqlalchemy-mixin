@@ -25,10 +25,10 @@ services:
     ports:
       - "5444:5432"
     volumes:
-      - postgres_data:/bitnami/postgresql
+      - postgres-data:/bitnami/postgresql
 
 networks:
   backend-network:
 
 volumes:
-  postgres_data:
+  postgres-data:

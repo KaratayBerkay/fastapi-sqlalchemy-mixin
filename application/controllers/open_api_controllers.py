@@ -57,8 +57,15 @@ class OpenAPISchemaCreator:
 
         # Check if endpoint is in safe list
         endpoint_path = f"{path}:{method}"
-        list_of_safe_endpoints = [f"{e[0]}:{str(e[1]).lower()}" for e in self.safe_endpoint_list]
-        print('endpoint_path', endpoint_path, 'list_of_safe_endpoints', list_of_safe_endpoints)
+        list_of_safe_endpoints = [
+            f"{e[0]}:{str(e[1]).lower()}" for e in self.safe_endpoint_list
+        ]
+        print(
+            "endpoint_path",
+            endpoint_path,
+            "list_of_safe_endpoints",
+            list_of_safe_endpoints,
+        )
         if endpoint_path not in list_of_safe_endpoints:
             if "security" not in schema["paths"][path][method]:
                 schema["paths"][path][method]["security"] = []
@@ -82,7 +89,9 @@ class OpenAPISchemaCreator:
         if "components" not in openapi_schema:
             openapi_schema["components"] = {}
 
-        openapi_schema["components"]["securitySchemes"] = self._create_security_schemes()
+        openapi_schema["components"][
+            "securitySchemes"
+        ] = self._create_security_schemes()
 
         # Configure route security and responses
         for route in self.app.routes:

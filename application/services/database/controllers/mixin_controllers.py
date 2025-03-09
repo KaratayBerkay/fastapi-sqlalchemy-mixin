@@ -1,6 +1,5 @@
 from sqlalchemy import (
     TIMESTAMP,
-    NUMERIC,
     func,
     text,
     UUID,
@@ -15,7 +14,6 @@ from sqlalchemy_mixins.repr import ReprMixin
 from sqlalchemy_mixins.smartquery import SmartQueryMixin
 
 from services.database.controllers.core_controllers import BaseAlchemyModel
-
 from services.database.controllers.crud_controllers import CRUDModel
 from services.database.controllers.filter_controllers import QueryModel
 from services.database.database import Base
