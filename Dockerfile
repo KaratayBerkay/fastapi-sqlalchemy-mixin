@@ -27,6 +27,8 @@ RUN poetry config virtualenvs.create false \
 
 # Copy application code
 COPY application /application
+COPY api_config.py /application/api_config.py
+COPY db_config.py /application/db_config.py
 
 # Run the application using the configured uvicorn server
 CMD ["poetry", "run", "python", "app.py"]

@@ -7,10 +7,13 @@
     <list default="true" id="517055c6-95bc-48d2-85b0-c2619a4da990" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes/notes/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/notes/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/services/database/controllers/filter_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/filter_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/auth/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/auth/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/schemas/users/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/schemas/users/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postgres.env" beforeDir="false" afterPath="$PROJECT_DIR$/postgres.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
     </list>
@@ -38,22 +41,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/berkay/repos/git-github-repo/fastapi-sqlalchemy-mixin/application/routes/users&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.token_controllers.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/berkay/repos/git-github-repo/fastapi-sqlalchemy-mixin/api_tests/test_users"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api_tests/test_users" />
       <recent name="$PROJECT_DIR$/application/routes/users" />
       <recent name="$PROJECT_DIR$/application/routes/notes" />
       <recent name="$PROJECT_DIR$/application/routes/home" />
       <recent name="$PROJECT_DIR$/application" />
-      <recent name="$PROJECT_DIR$/app/validations/response" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application/static" />

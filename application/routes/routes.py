@@ -20,6 +20,6 @@ def get_safe_endpoint_urls() -> list[tuple[str, str]]:
         ('/redoc', "GET"),
         ('/openapi.json', "GET"),
         ('/auth/register', "POST"),
-        ('/auth/login', "GET"),
+        ('/auth/login', "POST"),
         ('/metrics', "GET"),
     ]
