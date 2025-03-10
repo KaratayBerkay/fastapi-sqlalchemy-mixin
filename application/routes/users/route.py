@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Response
-from validations.request.auth.auth import RequestLogin, RequestRegister
+from application.validations.request.auth.auth import RequestLogin, RequestRegister
 
 
 users_route = APIRouter(prefix="/users", tags=["Users"])

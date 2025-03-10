@@ -1,7 +1,7 @@
 from typing import List
 from fastapi import FastAPI
 
-from error_handlers.bases import ErrorHandler
+from application.error_handlers.bases import ErrorHandler
 
 
 class ErrorHandlerRegisterController:

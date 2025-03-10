@@ -2,7 +2,7 @@ import jwt
 
 from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, Optional
-from api_config import api_configs
+from application.api_config import api_configs
 
 
 class JWTTokenController:

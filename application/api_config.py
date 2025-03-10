@@ -11,7 +11,7 @@ class Configs(BaseSettings):
     MIN_SIZE: int = 5
     MAX_SIZE: int = 50
 
-    model_config = SettingsConfigDict(env_file="api.env", env_prefix="API_")
+    model_config = SettingsConfigDict(env_file="../api.env", env_prefix="API_")
 
 
 api_configs = Configs()

@@ -7,7 +7,7 @@ from fastapi.exceptions import HTTPException
 
 # from decimal import Decimal
 # from sqlalchemy import TIMESTAMP, NUMERIC
-# from app.services.database.controllers.core_controllers import BaseAlchemyModel
+# from application.services.database.controllers.core_controllers import BaseAlchemyModel
 
 
 class Credentials(BaseModel):

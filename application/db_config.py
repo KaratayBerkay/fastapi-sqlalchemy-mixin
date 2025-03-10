@@ -15,7 +15,9 @@ class Configs(BaseSettings):
     def url(self):
         return f"{self.ENGINE}://{self.USER}:{self.PASSWORD}@{self.HOST}:{self.PORT}/{self.DB}"
 
-    model_config = SettingsConfigDict(env_file="postgres.env", env_prefix="POSTGRES_")
+    model_config = SettingsConfigDict(
+        env_file="../postgres.env", env_prefix="POSTGRES_"
+    )
 
 
 postgres_configs = Configs()

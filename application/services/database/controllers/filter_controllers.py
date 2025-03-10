@@ -6,13 +6,17 @@ including pagination, ordering, and complex query building.
 """
 
 from __future__ import annotations
+import arrow
+
 from typing import Any, TypeVar, Type, Union, Optional
 
 from sqlalchemy import ColumnExpressionArgument
 from sqlalchemy.orm import Query, Session
 from sqlalchemy.sql.elements import BinaryExpression
 
-from services.database.controllers.response_controllers import PostgresResponse
+from application.services.database.controllers.response_controllers import (
+    PostgresResponse,
+)
 
 
 T = TypeVar("T", bound="QueryModel")
@@ -27,6 +31,30 @@ class QueryModel:
     def _query(cls: Type[T], db: Session) -> Query:
         """Returns the query to use in the model."""
         return cls.pre_query if cls.pre_query else db.query(cls)
+
+    @classmethod
+    def add_new_arg_to_args(cls: Type[T], args_list, argument, value):
+        new_arg_list = list(
+            set(
+                args_
+                for args_ in list(args_list)
+                if isinstance(args_, BinaryExpression)
+            )
+        )
+        arg_left = lambda arg_obj: getattr(getattr(arg_obj, "left", None), "key", None)
+        # arg_right = lambda arg_obj: getattr(getattr(arg_obj, "right", None), "value", None)
+        if not any(True for arg in new_arg_list if arg_left(arg_obj=arg) == argument):
+            new_arg_list.append(value)
+        return tuple(new_arg_list)
+
+    @classmethod
+    def get_not_expired_query_arg(cls: Type[T], arg):
+        """Add expiry_starts and expiry_ends to the query."""
+        starts = cls.expiry_starts <= str(arrow.now())
+        ends = cls.expiry_ends > str(arrow.now())
+        arg = cls.add_new_arg_to_args(arg, "expiry_ends", ends)
+        arg = cls.add_new_arg_to_args(arg, "expiry_starts", starts)
+        return arg
 
     @classmethod
     def produce_query_to_add(cls: Type[T], filter_list):

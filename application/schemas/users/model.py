@@ -1,4 +1,4 @@
-from services.database.controllers.mixin_controllers import CrudMixin
+from application.services.database.controllers.mixin_controllers import CrudMixin
 
 from sqlalchemy import String, Text, UUID
 from sqlalchemy.orm import mapped_column, Mapped, relationship

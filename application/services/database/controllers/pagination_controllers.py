@@ -3,8 +3,10 @@ from typing import Any, Dict, Optional, Union
 from sqlalchemy import desc, asc
 from pydantic import BaseModel
 
-from validations.request.list_options.list_options import ListOptions
-from services.database.controllers.response_controllers import PostgresResponse
+from application.validations.request.list_options.list_options import ListOptions
+from application.services.database.controllers.response_controllers import (
+    PostgresResponse,
+)
 
 
 class PaginateConfig(BaseModel): ...

@@ -2,6 +2,7 @@ import uvicorn
 
 from controllers.route_controllers import RouteRegisterController
 from controllers.open_api_controllers import create_openapi_schema
+from controllers.alembic_controller import AlembicController
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,23 +13,26 @@ from middlewares.token_middleware import token_middleware
 from prometheus_fastapi_instrumentator import Instrumentator
 
 from routes.routes import get_routes
+from services.database.database import get_db
 
 
-def create_app():
-    from controllers.alembic_controller import AlembicController
-    from services.database.database import get_db
+def create_app(set_alembic: bool = True):
 
-    # Initialize AlembicController with active database session
-    with get_db() as active_session:
-        controller = AlembicController(session=active_session)
-        controller.update_alembic()
+    if set_alembic:  # Initialize AlembicController with active database session
+        with get_db() as active_session:
+            controller = AlembicController(session=active_session)
+            controller.update_alembic()
 
     application = FastAPI(
         title="FastAPI Application",
         description="FastAPI Application with OpenAPI schema configuration, security scheme configuration for Bearer authentication, automatic router registration, response class configuration, and security requirements for protected endpoints.",
         version="0.1.0",
     )
-    application.mount("/static", StaticFiles(directory="static"), name="static")
+    application.mount(
+        "/application/static",
+        StaticFiles(directory="application/static"),
+        name="static",
+    )
     application.add_middleware(
         CORSMiddleware,
         allow_origins=["http://localhost", "http://localhost:8000"],
@@ -51,7 +55,7 @@ def create_app():
     return application
 
 
-app = create_app()  # Create FastAPI application
+app = create_app(set_alembic=False)  # Create FastAPI application
 Instrumentator().instrument(app=app).expose(app=app)  # Setup Prometheus metrics
 
 

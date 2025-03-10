@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Response
-from validations.request.auth.auth import RequestLogin, RequestRegister
+from application.validations.request.auth.auth import RequestLogin, RequestRegister
 
 
 notes_route = APIRouter(prefix="/notes", tags=["Notes"])

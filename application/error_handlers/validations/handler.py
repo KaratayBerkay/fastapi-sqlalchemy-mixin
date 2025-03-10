@@ -1,7 +1,7 @@
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
 
-from error_handlers.validations.custom_errors import AppValidationError
+from application.error_handlers.validations.custom_errors import AppValidationError
 
 
 def validation_error_handler(request: Request, exc: AppValidationError):

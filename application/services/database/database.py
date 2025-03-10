@@ -2,7 +2,7 @@ from contextlib import contextmanager
 from functools import lru_cache
 from typing import Generator
 
-from db_config import postgres_configs
+from application.db_config import postgres_configs
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session, Session

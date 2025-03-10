@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from fastapi import status
 from fastapi.exceptions import HTTPException
 
-from services.database.database import get_db
+from application.services.database.database import get_db
 
 
 # Type variable for class methods returning self

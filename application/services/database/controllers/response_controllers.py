@@ -60,16 +60,18 @@ class PostgresResponse(Generic[T]):
         """Lazy load and return total count of results."""
         if self.is_list:
             return self._pre_query.count() if self._pre_query else 0
-        return 1
+        if self.data:
+            return 1
+        return 0
 
     @property
     def count(self) -> int:
         """Lazy load and return total count of results."""
         if self.is_list and self._count is None:
             self._count = self._query.count()
-        elif not self.is_list:
+        elif not self.is_list and self.data:
             self._count = 1
-        return self._count
+        return 0
 
     @property
     def query(self) -> Query:
@@ -81,11 +83,21 @@ class PostgresResponse(Generic[T]):
         """Check if response is a list."""
         return self._is_list
 
+    @property
     def as_dict(self) -> Dict[str, Any]:
         """Convert response to dictionary format."""
+        if isinstance(self.data, list):
+            return {
+                "metadata": self.metadata,
+                "is_list": self._is_list,
+                "query": str(self.query),
+                "count": self.count,
+                "data": [result.get_dict() for result in self.data],
+            }
         return {
             "metadata": self.metadata,
             "is_list": self._is_list,
-            "query": self.query,
+            "query": str(self.query),
             "count": self.count,
+            "data": self.data.get_dict() if self.data else {},
         }

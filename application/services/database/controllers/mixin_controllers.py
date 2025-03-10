@@ -13,21 +13,27 @@ from sqlalchemy_mixins.serialize import SerializeMixin
 from sqlalchemy_mixins.repr import ReprMixin
 from sqlalchemy_mixins.smartquery import SmartQueryMixin
 
-from services.database.controllers.core_controllers import BaseAlchemyModel
-from services.database.controllers.crud_controllers import CRUDModel
-from services.database.controllers.filter_controllers import QueryModel
-from services.database.database import Base
+from application.services.database.controllers.core_controllers import BaseAlchemyModel
+from application.services.database.controllers.crud_controllers import CRUDModel
+from application.services.database.controllers.filter_controllers import QueryModel
+from application.services.database.database import Base
 
 
-class BasicMixin(Base, BaseAlchemyModel):
+class BasicMixin(
+    Base,
+    BaseAlchemyModel,
+    CRUDModel,
+    SerializeMixin,
+    ReprMixin,
+    SmartQueryMixin,
+    QueryModel,
+):
 
     __abstract__ = True
     __repr__ = ReprMixin.__repr__
 
 
-class CrudMixin(
-    BasicMixin, CRUDModel, SerializeMixin, ReprMixin, SmartQueryMixin, QueryModel
-):
+class CrudMixin(BasicMixin):
     """
     Base mixin providing CRUD operations and common fields for PostgreSQL models.
 
@@ -64,13 +70,6 @@ class CrudMixin(
         server_default="2099-12-31",
         comment="Record validity end timestamp",
     )
-
-
-class BaseCollection(CrudMixin):
-    """Base model class with minimal fields."""
-
-    __abstract__ = True
-    __repr__ = ReprMixin.__repr__
 
 
 class CrudCollection(CrudMixin):

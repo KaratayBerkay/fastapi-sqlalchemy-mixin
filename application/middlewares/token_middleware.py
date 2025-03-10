@@ -2,7 +2,7 @@ from fastapi import Request, Response
 
 
 async def token_middleware(request: Request, call_next):
-    from routes.routes import get_safe_endpoint_urls
+    from application.routes.routes import get_safe_endpoint_urls
 
     base_url = "/".join(request.url.path.split("/")[:3])
     safe_endpoints = [_[0] for _ in get_safe_endpoint_urls()]

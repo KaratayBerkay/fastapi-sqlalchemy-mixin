@@ -7,23 +7,28 @@
     <list default="true" id="517055c6-95bc-48d2-85b0-c2619a4da990" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic.ini" beforeDir="false" afterPath="$PROJECT_DIR$/alembic.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api.env" beforeDir="false" afterPath="$PROJECT_DIR$/api.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/api_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/controllers/open_api_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/open_api_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/controllers/error_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/error_controllers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/controllers/token_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/controllers/token_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/error_handlers/validations/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/validations/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/error_handlers/validations/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/error_handlers/validations/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/middlewares/token_middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/middlewares/token_middleware.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/routes/auth/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/auth/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/application/routes/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/notes/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/notes/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/routes/users/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/routes/users/route.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/schemas/auth/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/schemas/auth/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/schemas/notes/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/schemas/notes/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/schemas/users/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/schemas/users/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/services/database/controllers/core_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/core_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/services/database/controllers/crud_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/crud_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/services/database/controllers/filter_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/filter_controllers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/services/database/controllers/mixin_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/mixin_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/services/database/controllers/pagination_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/pagination_controllers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/application/services/database/controllers/response_controllers.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/controllers/response_controllers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application/services/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/services/database/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/db_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postgres.env" beforeDir="false" afterPath="$PROJECT_DIR$/postgres.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/application/db_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +73,7 @@
       <recent name="$PROJECT_DIR$/application" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application" />
       <recent name="$PROJECT_DIR$/application/static" />
       <recent name="$PROJECT_DIR$/app/validations/request" />
       <recent name="$PROJECT_DIR$/app/error_handlers" />
