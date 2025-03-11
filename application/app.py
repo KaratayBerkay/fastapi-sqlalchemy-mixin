@@ -55,8 +55,8 @@ def create_app(set_alembic: bool = True):
     return application
 
 
-app = create_app(set_alembic=False)  # Create FastAPI application
-Instrumentator().instrument(app=app).expose(app=app)  # Setup Prometheus metrics
+app = create_app(set_alembic=False)                          # Create FastAPI application
+Instrumentator().instrument(app=app).expose(app=app)        # Setup Prometheus metrics
 
 
 if __name__ == "__main__":

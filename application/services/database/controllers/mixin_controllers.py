@@ -1,3 +1,4 @@
+import arrow
 from sqlalchemy import (
     TIMESTAMP,
     func,
@@ -59,15 +60,15 @@ class CrudMixin(BasicMixin):
 
     # Common timestamp fields for all models
     expiry_starts: Mapped[TIMESTAMP] = mapped_column(
-        type_=TIMESTAMP(timezone=True),
+        TIMESTAMP(timezone=True),
         server_default=func.now(),
         nullable=False,
         comment="Record validity start timestamp",
     )
     expiry_ends: Mapped[TIMESTAMP] = mapped_column(
-        type_=TIMESTAMP(timezone=True),
-        default="2099-12-31",
-        server_default="2099-12-31",
+        TIMESTAMP(timezone=True),
+        default=str(arrow.get("2099-12-31")),
+        server_default=func.now(),
         comment="Record validity end timestamp",
     )
 

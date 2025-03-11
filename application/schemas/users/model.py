@@ -12,6 +12,5 @@ class User(CrudMixin):
     name: Mapped[str] = mapped_column(String, nullable=False)
     surname: Mapped[str] = mapped_column(String, nullable=False)
     hashed_password: Mapped[str] = mapped_column(Text, nullable=False)
-    user_uu_id: Mapped[str] = mapped_column(UUID, nullable=False)
 
     tokens = relationship("Token", back_populates="user")

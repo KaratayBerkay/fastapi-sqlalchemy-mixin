@@ -3,7 +3,6 @@ from pydantic import ValidationError
 
 class AppBaseException(Exception):
     """Base class for all application-specific exceptions."""
-
     pass
 
 

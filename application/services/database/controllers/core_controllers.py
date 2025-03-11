@@ -77,6 +77,7 @@ class BaseAlchemyModel:
         """
         try:
             db.commit()
+            db.flush()
         except SQLAlchemyError as e:
             raise HTTPException(
                 status_code=status.HTTP_406_NOT_ACCEPTABLE,

@@ -67,10 +67,10 @@ class PostgresResponse(Generic[T]):
     @property
     def count(self) -> int:
         """Lazy load and return total count of results."""
-        if self.is_list and self._count is None:
-            self._count = self._query.count()
-        elif not self.is_list and self.data:
-            self._count = 1
+        if self.data and not isinstance(self.data, list):
+            return 1
+        elif self.data and isinstance(self.data, list):
+            return len(self.data)
         return 0
 
     @property
