@@ -79,6 +79,7 @@ class BaseAlchemyModel:
             db.commit()
             db.flush()
         except SQLAlchemyError as e:
+            db.rollback()
             raise HTTPException(
                 status_code=status.HTTP_406_NOT_ACCEPTABLE,
                 detail={
@@ -87,6 +88,7 @@ class BaseAlchemyModel:
                 },
             )
         except Exception as e:
+            db.rollback()
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail={

@@ -1,3 +1,5 @@
+import time
+
 import uvicorn
 
 from controllers.route_controllers import RouteRegisterController
@@ -35,7 +37,9 @@ def create_app(set_alembic: bool = True):
     )
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost", "http://localhost:8000"],
+        allow_origins=[
+            "http://localhost", "http://localhost:8000"
+        ],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -55,12 +59,15 @@ def create_app(set_alembic: bool = True):
     return application
 
 
-app = create_app(set_alembic=False)                          # Create FastAPI application
+app = create_app(set_alembic=True)                          # Create FastAPI application
 Instrumentator().instrument(app=app).expose(app=app)        # Setup Prometheus metrics
 
 
 if __name__ == "__main__":
-    uvicorn_config = uvicorn.Config(
-        app="app:app", host="0.0.0.0", port=8000, log_level="info", reload=True
-    )
-    uvicorn.Server(uvicorn_config).run()  # Run the application with Uvicorn Server
+    while True:
+        time.sleep(5)
+
+    # uvicorn_config = uvicorn.Config(
+    #     app="app:app", host="0.0.0.0", port=8000, log_level="info", reload=True
+    # )
+    # uvicorn.Server(uvicorn_config).run()  # Run the application with Uvicorn Server

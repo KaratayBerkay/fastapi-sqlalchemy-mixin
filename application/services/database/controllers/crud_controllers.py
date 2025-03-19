@@ -10,10 +10,11 @@ from decimal import Decimal
 from sqlalchemy import TIMESTAMP, NUMERIC
 from sqlalchemy.orm.attributes import InstrumentedAttribute
 
-# from application.services.database.controllers.core_controllers import BaseAlchemyModel
-
 
 class Credentials(BaseModel):
+    """
+    Class to store user credentials.
+    """
     person_id: int
     person_name: str
     full_name: Optional[str] = None
@@ -71,8 +72,7 @@ class CRUDModel:
 
         # Search for existing record
         query = db.query(cls).filter(
-            cls.expiry_ends > str(arrow.now()),
-            cls.expiry_starts <= str(arrow.now()),
+            cls.expiry_ends > str(arrow.now()), cls.expiry_starts <= str(arrow.now()),
         )
 
         for key, value in kwargs.items():
@@ -222,15 +222,18 @@ class CRUDModel:
 
         Returns:
             Updated record
-
-        Raises:
-            ValueError: If attempting to update is_confirmed with other fields
         """
         for key, value in kwargs.items():
             setattr(self, key, value)
 
         self.update_credentials()
-        db.flush()
+        try:
+            db.flush()
+            self.meta_data.updated = True
+        except Exception as e:
+            print('Error:', e)
+            self.meta_data.updated = False
+            db.rollback()
         return self
 
     def update_credentials(self) -> None:
