@@ -13,9 +13,16 @@ class Configs(BaseSettings):
     ACCESS_TOKEN_TAG: str = "Authorization"
     REFRESH_TOKEN_TAG: str = "Refresher"
     ACCESS_TOKEN_LENGTH: int = 72
-    REFRESH_TOKEN_LENGTH: int = 128
+    REFRESH_TOKEN_LENGTH: int = 128,
+    SET_ALEMBIC: int = 0
+    PATH: str = "app:app"
+    HOST: str = "0.0.0.0"
+    PORT: str = "8888"
+    LOG_LEVEL: str = "info"
+    RELOAD: int = 1
 
     model_config = SettingsConfigDict(env_file="../api.env", env_prefix="API_")
 
 
 api_configs = Configs()
+print('api_configs', api_configs)

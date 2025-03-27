@@ -29,14 +29,21 @@ class PostgresResponse(Generic[T]):
         self,
         pre_query: Query,
         query: Query,
+        model,
         is_array: bool = True,
         metadata: Any = None,
     ):
+        self._core_class = model
         self._is_list = is_array
         self._query = query
         self._pre_query = pre_query
         self._count: Optional[int] = None
         self.metadata = metadata
+
+    @property
+    def core_class(self):
+        """Get query object."""
+        return self._core_class
 
     @property
     def data(self) -> Union[T, list[T]]:
@@ -74,7 +81,12 @@ class PostgresResponse(Generic[T]):
         return 0
 
     @property
-    def query(self) -> Query:
+    def query(self) -> str:
+        """Get query object."""
+        return str(self._query)
+
+    @property
+    def core_query(self) -> Query:
         """Get query object."""
         return self._query
 

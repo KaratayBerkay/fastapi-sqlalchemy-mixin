@@ -4,12 +4,8 @@ from sqlalchemy import desc, asc
 from pydantic import BaseModel
 
 from application.validations.request.list_options.list_options import ListOptions
-from application.services.database.controllers.response_controllers import (
-    PostgresResponse,
-)
-
-
-class PaginateConfig(BaseModel): ...
+from application.services.database.controllers.response_controllers import PostgresResponse
+from application.api_config import api_configs
 
 
 class PaginationConfig(BaseModel):
@@ -44,17 +40,17 @@ class Pagination:
     and items based on the data source.
 
     Attributes:
-        DEFAULT_SIZE: Default number of items per page (10)
-        MIN_SIZE: Minimum allowed page size (10)
-        MAX_SIZE: Maximum allowed page size (40)
+        DEFAULT_SIZE: Default number of items per page
+        MIN_SIZE: Minimum allowed page size
+        MAX_SIZE: Maximum allowed page size
     """
 
-    DEFAULT_SIZE = PaginateConfig.DEFAULT_SIZE
-    MIN_SIZE = PaginateConfig.MIN_SIZE
-    MAX_SIZE = PaginateConfig.MAX_SIZE
+    DEFAULT_SIZE: int = int(api_configs.DEFAULT_SIZE or 10)
+    MIN_SIZE: int = int(api_configs.MIN_SIZE or 5)
+    MAX_SIZE: int = int(api_configs.MAX_SIZE or 50)
 
     def __init__(self, data: PostgresResponse):
-        self.data = data
+        self._data = data
         self.size: int = self.DEFAULT_SIZE
         self.page: int = 1
         self.orderField: Optional[Union[tuple[str], list[str]]] = ["uu_id"]
@@ -64,6 +60,10 @@ class Pagination:
         self.all_count: int = 0
         self.total_pages: int = 1
         self._update_page_counts()
+
+    @property
+    def data(self) -> Union[list, dict]:
+        return self._data.data
 
     def change(self, **kwargs) -> None:
         """Update pagination settings from config."""
@@ -80,14 +80,14 @@ class Pagination:
 
     def feed(self, data: PostgresResponse) -> None:
         """Calculate pagination based on data source."""
-        self.data = data
+        self._data = data
         self._update_page_counts()
 
     def _update_page_counts(self) -> None:
         """Update page counts and validate current page."""
         if self.data:
-            self.total_count = self.data.count
-            self.all_count = self.data.total_count
+            self.total_count = self._data.count
+            self.all_count = self._data.total_count
 
         self.size = (
             self.size
@@ -144,12 +144,15 @@ class PaginationResult:
     def __init__(
         self, data: PostgresResponse, pagination: Pagination, response_model: Any = None
     ):
+        self._data = data
         self._query = data.query
+        self._core_query = data.core_query
         self.pagination = pagination
         self.response_type = data.is_list
         self.limit = self.pagination.size
         self.offset = self.pagination.size * (self.pagination.page - 1)
         self.order_by = self.pagination.orderField
+        self.order_type = self.pagination.orderType
         self.response_model = response_model
 
     def dynamic_order_by(self):
@@ -158,26 +161,33 @@ class PaginationResult:
         Returns:
             Ordered query object.
         """
-        if not len(self.order_by) == len(self.pagination.orderType):
+        if not len(self.order_by) == len(self.order_type):
             raise ValueError(
                 "Order by fields and order types must have the same length."
             )
-        order_criteria = zip(self.order_by, self.pagination.orderType)
+        order_criteria = zip(self.order_by, self.order_type)
+        print('order_criteria', order_criteria)
+        if not self._data.data:
+            return self._core_query
+
         for field, direction in order_criteria:
-            if hasattr(self._query.column_descriptions[0]["entity"], field):
+            print('field', field, direction)
+            columns = self._data.data[0].filterable_attributes
+            print('columns', columns)
+            if field in columns:
                 if direction.lower().startswith("d"):
-                    self._query = self._query.order_by(
+                    self._core_query = self._core_query.order_by(
                         desc(
-                            getattr(self._query.column_descriptions[0]["entity"], field)
+                            getattr(self._core_query.column_descriptions[0]["entity"], field)
                         )
                     )
                 else:
-                    self._query = self._query.order_by(
+                    self._core_query = self._core_query.order_by(
                         asc(
-                            getattr(self._query.column_descriptions[0]["entity"], field)
+                            getattr(self._core_query.column_descriptions[0]["entity"], field)
                         )
                     )
-        return self._query
+        return self._core_query
 
     @property
     def data(self) -> Union[list | dict]:

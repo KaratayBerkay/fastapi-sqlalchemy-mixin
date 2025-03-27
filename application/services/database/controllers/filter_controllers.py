@@ -14,9 +14,7 @@ from sqlalchemy import ColumnExpressionArgument
 from sqlalchemy.orm import Query, Session
 from sqlalchemy.sql.elements import BinaryExpression
 
-from application.services.database.controllers.response_controllers import (
-    PostgresResponse,
-)
+from application.services.database.controllers.response_controllers import PostgresResponse
 
 
 T = TypeVar("T", bound="QueryModel")
@@ -94,7 +92,9 @@ class QueryModel:
             kwargs["is_confirmed"] = True
         kwargs.pop("system", None)
         query = cls._query(db).filter_by(**kwargs)
-        return PostgresResponse(pre_query=cls._query(db), query=query, is_array=False)
+        return PostgresResponse(
+            model=cls, pre_query=cls._query(db), query=query, is_array=False
+        )
 
     @classmethod
     def filter_one(
@@ -115,7 +115,7 @@ class QueryModel:
         args = cls.get_not_expired_query_arg(args)
         query = cls._query(db=db).filter(*args)
         return PostgresResponse(
-            pre_query=cls._query(db=db), query=query, is_array=False
+            model=cls, pre_query=cls._query(db=db), query=query, is_array=False
         )
 
     @classmethod
@@ -135,7 +135,7 @@ class QueryModel:
         """
         query = cls._query(db=db).filter(*args)
         return PostgresResponse(
-            pre_query=cls._query(db=db), query=query, is_array=False
+            model=cls, pre_query=cls._query(db=db), query=query, is_array=False
         )
 
     @classmethod
@@ -157,7 +157,9 @@ class QueryModel:
 
         query = cls._query(db)
         query = query.filter(*args)
-        return PostgresResponse(pre_query=cls._query(db), query=query, is_array=True)
+        return PostgresResponse(
+            model=cls, pre_query=cls._query(db), query=query, is_array=True
+        )
 
     @classmethod
     def filter_all(
@@ -176,7 +178,9 @@ class QueryModel:
         """
         args = cls.get_not_expired_query_arg(args)
         query = cls._query(db).filter(*args)
-        return PostgresResponse(pre_query=cls._query(db), query=query, is_array=True)
+        return PostgresResponse(
+            model=cls, pre_query=cls._query(db), query=query, is_array=True
+        )
 
     @classmethod
     def filter_by_all_system(cls: Type[T], db: Session, **kwargs) -> PostgresResponse:
@@ -191,4 +195,6 @@ class QueryModel:
             Query response with matching records
         """
         query = cls._query(db).filter_by(**kwargs)
-        return PostgresResponse(pre_query=cls._query(db), query=query, is_array=True)
+        return PostgresResponse(
+            model=cls, pre_query=cls._query(db), query=query, is_array=True
+        )
